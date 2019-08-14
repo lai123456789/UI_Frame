@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8"/>
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="js/jquery-1.11.3.min.js"></script>
+        <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+        <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+        <script src="js/fileinput.js" type="text/javascript"></script>
+        <script src="js/fileinput_locale_zh.js" type="text/javascript"></script>
+
+    </head>
+<body>
+	<form action="" enctype="multipart/form-data" method="post">
+                <input id="imgUpload" class="file" name="thumb" type="file" multiple data-min-file-count="1">
+                <br>
+                <button type="submit" class="btn btn-primary">提交</button>
+                  <button type="reset" class="btn btn-default">重置</button>
+            </form>
+</body>
+<script>
+	$(function(){
+	$("#imgUpload").fileinput({
+        language: 'zh',
+        uploadUrl: "/admin.php?a=ajaxuploadimage",
+        dropZoneEnabled: false,
+        autoReplace: true,
+        maxFileCount: 1,
+        allowedFileExtensions: ["jpg","jpeg", "png", "gif"],
+        browseClass: "btn btn-primary", //按钮样式 
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+        })
+    .on("fileuploaded", function (e, data) {
+        var res = data.response;
+        if (res.state > 0) {
+            //异步上传，返回来的值添加到隐藏的input里面提交上去一起处理
+             $("#file_upload_image").attr('value',res.path);
+            alert(res.msg+'上传成功');
+            //上传后路径
+            // alert(res.path);
+        }
+        else {
+            alert(res.msg+'上传失败')
+        }
+    })
+})
+
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+.progress b,.xsprogress b{border-radius: 15px; background-color: #eee;width:150px; height:13px;border:1px solid #dcdcdc; display:inline-block; margin-right:5px; position:relative; top:2px;}
+
+.progress b i,.xsprogress b i{background-color:#a0ce14; width:1px; display:block;height:13px;border-radius: 13px 0 0 13px;transition:all 0.5s linear; }
+
+
+  </style>
+   <script src="lib/jquery-2.1.4.js"></script>
+</head>
+<body>
+  <span class="progress"><b ><i></i></b><em>50</em>%</span>
+</body>
+<script>
+$(".progress em").each(function(index, element) {
+
+            var progress_width = 150*$(this).text()/100;  //宽度换算
+
+            $(this).parents(".progress").find("i").width(progress_width);
+
+});
+</script>
+</html>

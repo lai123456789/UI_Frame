@@ -1,0 +1,403 @@
+<!DOCTYPE>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>WeUI</title>
+    <link rel="stylesheet" href="style/weui.css"/>
+    <link rel="stylesheet" href="style/example.css"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <style>
+input::-webkit-input-placeholder{
+            
+            font-size: 15px;
+        }
+        input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+            font-size: 15px;
+        }
+        input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+            font-size: 15px;
+        }
+        input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+            
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="weui-cells__title">
+        <a href="../gongdan_server_info/gongdan_server_info.html" class="weui-btn weui-btn-mini weui-btn_primary" id="btn_sure">工单服务</a>
+    </div>-->
+    <div class="weui-cells weui-cells_form" style="background:#E3934B;margin-top: 0px;">
+            <div class="weui-cell">
+                <div class="weui-cell__hd" id="bd">
+                    <p style="color: white"><a href=""><i class="fa fa-chevron-left"></i></a></p>
+                </div>
+                <div class="weui-cell__bd" style="text-align:center;color: white">用车申请</div>
+                <!--<div class="weui-cell__ft" style="color: blue"><a href="../comment/comment.html">确认</a></div>-->
+                <div id="queren"> </div> <!--确认按钮-->
+                <div id="chakan"> </div> <!--查看按钮-->
+            </div>
+    </div>
+      <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">申请人：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" placeholder="请输入申请人">
+                </div>
+                <div class="weui-cell__ft">
+                    <img class="weui-vcode-img" src="./images/User.png" width="37px" height="2px">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">所在部门：</label></div>
+                <div class="weui-cell__bd">                    
+                    <div class="page__bd page__bd_spacing">                        
+                       
+                    <div class="weui-cells__title" id="showPicker" style="font-size: 16px">请选择部门                        
+                    </div>
+
+                        <!-- <a href="javascript:;" class="weui-btn weui-btn_default" id="showDatePicker">日期选择器</a> -->
+                    </div>
+                </div>
+                <div class="weui-cell__ft">
+                    <img class="weui-vcode-img" src="./images/icon_nav_article.png" width="37px" height="2px">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd">
+                    <label class="weui-label">申请用途：</label>
+                </div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="tel" placeholder="请输入申请用途">
+                </div>
+                <div class="weui-cell__ft">
+                    <img class="weui-vcode-img" src="./images/icon_nav_flow.png" width="37px" height="2px">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">申请用车时间</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="">
+                </div>
+                <div class="weui-cell__ft">
+                    <img class="weui-vcode-img" src="./images/time.png" width="40px" height="2px">
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label for="" class="weui-label">预计还车时间</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="date" value="">
+                </div>
+                <div class="weui-cell__ft">
+                    <img class="weui-vcode-img" src="./images/time.png" width="40px" height="2px">
+                </div>
+            </div>
+        </div>                  
+            
+            
+            <!-- <div class="weui-cell">   
+                <div class="weui-cells__title">预计还车时间：</div>
+                <div class="">
+                    <div class="weui-cells__title" id="showDatePicker">请选择日期</div>
+                </div>
+            </div> -->
+            <div class="weui-btn-area" style="">
+                    <a class="weui-btn" id="bangding" style="background: #E3934B;">确定</a>
+                </div>
+                    
+        
+
+        
+            
+            <div class="page home js_show">
+    <div class="page__hd">
+        <h1 class="page__title">
+            <img src="./images/logo.png" alt="WeUI" height="21px">
+        </h1>
+        <p class="page__desc">WeUI 是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信内网页和微信小程序量身设计，令用户的使用感知更加统一。</p>
+    </div>
+    <div class="page__bd page__bd_spacing">
+        <ul>
+            <li class="">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">表单</p>
+                    <img src="./images/icon_nav_form.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner" data-height="225" style="">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="button" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Button</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="input" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Input</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="list" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>List</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="slider" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Slider</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="uploader" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Uploader</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">基础组件</p>
+                    <img src="./images/icon_nav_layout.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="article" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Article</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="badge" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Badge</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="flex" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Flex</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="footer" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Footer</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="gallery" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Gallery</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="grid" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Grid</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="icons" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Icons</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="loadmore" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Loadmore</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="panel" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Panel</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="preview" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Preview</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="progress" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Progress</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">操作反馈</p>
+                    <img src="./images/icon_nav_feedback.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="actionsheet" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Actionsheet</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="dialog" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Dialog</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="msg" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Msg</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="picker" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Picker</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="toast" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Toast</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">导航相关</p>
+                    <img src="./images/icon_nav_nav.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="navbar" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Navbar</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                        <a class="weui-cell weui-cell_access js_item" data-id="tabbar" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Tabbar</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="weui-flex js_category">
+                    <p class="weui-flex__item">搜索相关</p>
+                    <img src="./images/icon_nav_search.png" alt="">
+                </div>
+                <div class="page__category js_categoryInner">
+                    <div class="weui-cells page__category-content">
+                        <a class="weui-cell weui-cell_access js_item" data-id="searchbar" href="javascript:;">
+                            <div class="weui-cell__bd">
+                                <p>Search Bar</p>
+                            </div>
+                            <div class="weui-cell__ft"></div>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="">
+                <div class="weui-flex js_item" data-id="layers">
+                    <p class="weui-flex__item">层级规范</p>
+                    <img src="./images/icon_nav_z-index.png" alt="">
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="page__ft j_bottom">
+        <a href="javascript:home()"><img src="./images/icon_footer.png"></a>
+    </div>
+</div>
+        
+        
+                        
+        
+</body>
+<script type="text/javascript">    
+    $('#showPicker').on('click', function () {
+        weui.picker([{
+            label: '采购部',
+            value: '采购部'
+        }, {
+            label: '外发部',
+            value: '外发部'
+        }, {
+            label: '装配部',
+            value: '装配部'
+        },{
+            label: '机加部',           
+            value: '机加部'
+        }, {
+            label: '人事部',
+            value: '人事部'
+        },{
+            label: '品质部',
+            value: '品质部'
+        },{
+            label: '设计部',
+            value: '设计部'
+        },{
+            label: '精益科',
+            value: '精益科'
+        }], {
+            onChange: function (result) {
+                $("#showPicker").text(result);
+            },
+            onConfirm: function (result) {
+                console.log(result);
+            }
+        });
+    });
+    $('#showDatePicker').on('click', function () {
+        weui.datePicker({
+            start: 1990,
+            end: new Date().getFullYear(),
+            onChange: function (result) {
+                $("#showDatePicker").text(result);
+            },
+            onConfirm: function (result) {
+                console.log(result);
+            }
+        });
+    });
+</script>
+
+    <script src="js/zepto.min.js"></script>
+    <!-- <script src="js/weui.min.js"></script> -->
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script src="https://res.wx.qq.com/open/libs/weuijs/1.0.0/weui.min.js"></script>
+    <script src="js/example.js"></script>
+</body>
+</html>
